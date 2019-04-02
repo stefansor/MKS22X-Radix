@@ -26,7 +26,11 @@ public class Radix{
 
   public static void radixsort(int[]data){
     MyLinkedList[] buckets = new MyLinkedList[20];
-
+    int highest = max(data);
+    int times = numOfDigits(highest);
+    for(int i = 0; i < times; i++){
+      ////code that distributes the numbers according to digits
+    }
   }
 
 
