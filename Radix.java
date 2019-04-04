@@ -54,8 +54,9 @@ public class Radix{
   ///Plan
   // 1. write a method that sorts the digits in each bucket for each set
   //  of digits check
-  // 2. write method that links the filled buckets
+  // 2. write method that links the filled buckets check
   // 3. write method that copies linked list into data
+  // 4. make them all return void when testing is done
 
   private static MyLinkedList[] sort(int[] data, int place, MyLinkedList[] buckets){
     for(int i = 0; i < data.length; i++){
@@ -75,6 +76,16 @@ public class Radix{
     }
     return buckets;
   }
+
+  private static int[] linkCopy(int[] data, MyLinkedList fullbucket){
+    int i = 0;
+    while(fullbucket.size() > 1){
+      data[i] = fullbucket.remove();
+      i++;
+    }
+    return data;
+  }
+
 
   public static void main(String[] args){
     int[] yea = new int[]{
@@ -101,7 +112,12 @@ public class Radix{
     for(int i = 0; i < 20; i++){
       System.out.println(stuff[i]);
     }
-
+    System.out.println("////////////////////////////");
+    linkCopy(yea, stuff[0]);
+    for(int i = 0; i < 20; i++){
+      System.out.println(stuff[i]);
+    }
+    System.out.println(Arrays.toString(yea));
 
 
   }
