@@ -51,7 +51,7 @@ public class Radix{
 
 
 
-  ///Plan 
+  ///Plan
   // 1. write a method that sorts the digits in each bucket for each set
   //  of digits check
   // 2. write method that links the filled buckets
@@ -69,7 +69,12 @@ public class Radix{
     return buckets;
   }
 
-
+  private static MyLinkedList[] link(MyLinkedList[] buckets){
+    for(int i = 1; i < 20; i++){
+      buckets[0].extend(buckets[i]);
+    }
+    return buckets;
+  }
 
   public static void main(String[] args){
     int[] yea = new int[]{
@@ -91,6 +96,12 @@ public class Radix{
     for(int i = 0; i < 20; i++){
       System.out.println(stuff[i]);
     }
+    System.out.println("///////////////////");
+    link(stuff);
+    for(int i = 0; i < 20; i++){
+      System.out.println(stuff[i]);
+    }
+
 
 
   }
