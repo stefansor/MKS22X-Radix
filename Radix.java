@@ -38,12 +38,13 @@ public class Radix{
     int highest = max(data);
     int times = numOfDigits(highest);
 
-    for(int i = 0; i < times; i++){
+    for(int i = 0; i <= times; i++){
       //function that sorts by the chosen digits
+      sort(data, i, buckets);
       //function that links the buckets
+      link(buckets);
       //funciton that copies to data
-
-
+      linkCopy(data, buckets[0]);
     }
   }
 
@@ -58,7 +59,7 @@ public class Radix{
   // 3. write method that copies linked list into data
   // 4. make them all return void when testing is done
 
-  private static MyLinkedList[] sort(int[] data, int place, MyLinkedList[] buckets){
+  private static void sort(int[] data, int place, MyLinkedList[] buckets){
     for(int i = 0; i < data.length; i++){
       if(data[i] < 0){
         buckets[9 - Math.abs(getDigit(data[i], place))].add(data[i]);
@@ -67,23 +68,20 @@ public class Radix{
         buckets[10 + Math.abs(getDigit(data[i], place))].add(data[i]);
       }
     }
-    return buckets;
   }
 
-  private static MyLinkedList[] link(MyLinkedList[] buckets){
+  private static void link(MyLinkedList[] buckets){
     for(int i = 1; i < 20; i++){
       buckets[0].extend(buckets[i]);
     }
-    return buckets;
   }
 
-  private static int[] linkCopy(int[] data, MyLinkedList fullbucket){
+  private static void linkCopy(int[] data, MyLinkedList fullbucket){
     int i = 0;
-    while(fullbucket.size() > 1){
+    while(fullbucket.size() > 0){
       data[i] = fullbucket.remove();
       i++;
     }
-    return data;
   }
 
 
@@ -95,15 +93,7 @@ public class Radix{
     for(int i = 0; i < 20; i++){
       stuff[i] = new MyLinkedList();
     }
-    System.out.println(numOfDigits(32432));
-    System.out.println(getDigit(32432, 0));
-    System.out.println(getDigit(32432, 1));
-    System.out.println(getDigit(32432, 2));
-    System.out.println(getDigit(32432, 3));
-    System.out.println(getDigit(32432, 4));
-    System.out.println(getDigit(32432, 5));
-    System.out.println("//////////////////////////");
-    sort(yea, 2, stuff);
+    sort(yea, 0, stuff);
     for(int i = 0; i < 20; i++){
       System.out.println(stuff[i]);
     }
@@ -117,6 +107,13 @@ public class Radix{
     for(int i = 0; i < 20; i++){
       System.out.println(stuff[i]);
     }
+
+    System.out.println(Arrays.toString(yea));
+    System.out.println();
+    System.out.println("Radix Testing");
+    System.out.println(Arrays.toString(yea));
+    radixsort(yea);
+    System.out.println("Should be sorted");
     System.out.println(Arrays.toString(yea));
 
 
