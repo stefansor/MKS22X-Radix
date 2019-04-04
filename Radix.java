@@ -51,9 +51,9 @@ public class Radix{
 
 
 
-  ///Plan -- inspired by Mohammad Jawwad - will work later tonight
+  ///Plan 
   // 1. write a method that sorts the digits in each bucket for each set
-  //  of digits
+  //  of digits check
   // 2. write method that links the filled buckets
   // 3. write method that copies linked list into data
 
