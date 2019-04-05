@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class Node{
  private Integer data;
@@ -38,7 +38,7 @@ class Node{
  public Node setPrev(Node newnum){
    if(newnum == null){
      this.prev = null;
-     return null;
+     return this;
    }
    if(this.prev == null){
      this.prev = newnum;//changes prev node in node
@@ -78,6 +78,12 @@ public class MyLinkedList{
    start = null;//basic constructor as told by Mr. K
    end = null;
  }
+
+ public void clear() {
+    length = 0;
+    start = null;
+    end = null;
+  }
 
  public boolean add(Integer value){
    if(end == null && start == null){
@@ -195,6 +201,18 @@ public void add(int index, Integer value){
   }
 }
 
+public Integer remove(){
+  Integer ol = this.start.getData();
+  if(size() == 1){
+    clear();
+    return ol;
+  }
+  this.start = this.start.next();
+  this.start.setPrev(null);
+  this.length--;
+  return ol;
+}
+
 
 public Integer remove(int index){
   if(index < 0 || index >= this.size()){
@@ -208,7 +226,7 @@ public Integer remove(int index){
     this.length--;
     return ol;
   }
-  if(index == this.size() - 1){
+  else if(index == this.size() - 1){
     Integer ol = this.end.getData();
     this.end = this.end.prev();
     this.end.setNext(null);
@@ -261,9 +279,8 @@ public void extend(MyLinkedList other){
 }
 
 
-}
 
-class Driver{
+
   public static void main(String[] args) {
 
     System.out.println("---------TESTING MYLINKEDLIST ---------");
@@ -406,7 +423,7 @@ class Driver{
     System.out.println("size of a should be 2: " + a.size());
     System.out.println("size of b should be 0: " + b.size());
     System.out.println("--------- END OF TEST ----------");
-
+    System.out.println();
   }
 
 }
